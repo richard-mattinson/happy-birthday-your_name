@@ -1,10 +1,20 @@
 const title = document.querySelector("#title_text")
+
 const yourNameInput = document.querySelector("#your_name_text");
+const yourAgeInput = document.querySelector("#your_age_text")
+const yourFavoriteInput = document.querySelector("#your_favorite_text")
+
+const birthdayElements = document.querySelector("#birthday_elements")
+const birthdayText = document.querySelector("#birthday_title")
 const birthdayButtons = document.querySelector("#birthday_buttons")
 const buttonPlayLanguage = document.querySelectorAll(".play_language_button")
+const birthdayAge = document.querySelector("#birthday_age");
+const birthdayFavorite = document.querySelector("#birthday_favorite");
 
 const state = {
-    name: "your_name"
+    name: "your_name",
+    age: "your_age",
+    favorite: "your_favorite"
 }
 
 const birthdayMessages = {
@@ -12,15 +22,48 @@ const birthdayMessages = {
     spanish: () => `Feliz cumpleaños a ti, feliz cumpleaños a ti, feliz cumpleaños, querida ${state.name}/, feliz cumpleaños a ti`,
     french: () => `Joyeux anniversaire, joyeux anniversaire, joyeux anniversaire chère ${state.name}, joyeux anniversaire.`,
     italian: () => `Buon compleanno a te, buon compleanno a te, buon compleanno cara ${state.name}, buon compleanno a te.`,
+    chinese: () => `Zhù nǐ shēngrì kuàilè, zhù nǐ shēngrì kuàilè, zhù qīn'ài de ${state.name} shēngrì kuàilè, zhù nǐ shēngrì kuàilè.`,
 };
 
 yourNameInput.addEventListener("keydown", (event) => {
     if (event.key === "Enter" && yourNameInput.value !== "") {
         state.name = yourNameInput.value;
-        title.textContent = `Happy Birthday ${state.name}!`
-        birthdayButtons.style.display = "flex"
+        if (state.age !== "your_age") {
+            title.textContent = `Happy Birthday #${state.age} ${state.name}! \u{1F389}`;
+        } else {
+            title.textContent = `Happy Birthday ${state.name}! \u{1F389}`;
+        }
+        checkState()
     }
 });
+
+yourAgeInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" && yourAgeInput.value !== "") {
+        state.age = Number(yourAgeInput.value);
+        state.wowAge = (state.age / 2) + 7
+        birthdayAge.textContent = `\u{1F62E} Wow, you're ${state.age}? You don't look a day over ${state.wowAge}! \u{1F552}`;
+        if (state.name !== "your_name") {
+            title.textContent = `Happy Birthday #${state.age} ${state.name}! \u{1F389}`;
+        } else {
+            title.textContent = `Happy Birthday #${state.age}! \u{1F389}`;
+        }
+        checkState();
+    }
+})
+
+yourFavoriteInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" && yourFavoriteInput.value !== "") {
+        state.favorite = yourFavoriteInput.value;
+        birthdayFavorite.textContent = `I really hope you get so much ${state.favorite} today! \u{1F381}`;
+        checkState();
+    }
+});
+
+function checkState() {
+    if (state.name !== "your_name" && state.age !== "your_age" && state.favorite !== "your_favorite") {
+        birthdayElements.style.display = "block";
+    }
+}
 
 buttonPlayLanguage.forEach(button => {
     button.addEventListener("click", (event) => {
