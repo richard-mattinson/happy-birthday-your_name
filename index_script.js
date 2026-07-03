@@ -18,20 +18,21 @@ const state = {
 }
 
 const birthdayMessages = {
-    english: () => `Happy birthday to you, happy birthday to you, happy birthday dear ${state.name}, happy birthday to you.`,
-    spanish: () => `Feliz cumpleaños a ti, feliz cumpleaños a ti, feliz cumpleaños, querida ${state.name}/, feliz cumpleaños a ti`,
-    french: () => `Joyeux anniversaire, joyeux anniversaire, joyeux anniversaire chère ${state.name}, joyeux anniversaire.`,
-    italian: () => `Buon compleanno a te, buon compleanno a te, buon compleanno cara ${state.name}, buon compleanno a te.`,
-    chinese: () => `Zhù nǐ shēngrì kuàilè, zhù nǐ shēngrì kuàilè, zhù qīn'ài de ${state.name} shēngrì kuàilè, zhù nǐ shēngrì kuàilè.`,
+  english: () => `Happy birthday to you, happy birthday to you, happy birthday dear ${state.name}, happy birthday to you.`,
+  spanish: () => `Feliz cumpleaños a ti, feliz cumpleaños a ti, feliz cumpleaños, querida ${state.name}/, feliz cumpleaños a ti`,
+  french: () => `Joyeux anniversaire, joyeux anniversaire, joyeux anniversaire chère ${state.name}, joyeux anniversaire.`,
+  italian: () => `Buon compleanno a te, buon compleanno a te, buon compleanno cara ${state.name}, buon compleanno a te.`,
+  chinese: () => `Zhù nǐ shēngrì kuàilè, zhù nǐ shēngrì kuàilè, zhù qīn'ài de ${state.name} shēngrì kuàilè, zhù nǐ shēngrì kuàilè.`,
+  russian: () => `S dnom rozhdeniya tebya, s dnom rozhdeniya tebya, s dnom rozhdeniya, dorogaya ${state.name}, s dnom rozhdeniya tebya.`,
 };
 
 yourNameInput.addEventListener("change", (event) => {
     if (yourNameInput.value !== "") {
         state.name = yourNameInput.value;
         if (state.age !== "your_age") {
-            title.textContent = `Happy Birthday #${state.age} ${state.name}! \u{1F389}`;
+            title.textContent = `Happy Birthday #${state.age} ${state.name.toUpperCase()}! \u{1F389}`;
         } else {
-            title.textContent = `Happy Birthday ${state.name}! \u{1F389}`;
+            title.textContent = `Happy Birthday ${state.name.toUpperCase()}! \u{1F389}`;
         }
         checkState()
     }
@@ -43,7 +44,7 @@ yourAgeInput.addEventListener("change", (event) => {
       state.wowAge = state.age / 2 + 7;
       birthdayAge.textContent = `\u{1F62E} Wow, you're ${state.age}? You don't look a day over ${state.wowAge}! \u{1F552}`;
       if (state.name !== "your_name") {
-        title.textContent = `Happy Birthday #${state.age} ${state.name}! \u{1F389}`;
+        title.textContent = `Happy Birthday #${state.age} ${state.name.toUpperCase()}! \u{1F389}`;
       } else {
         title.textContent = `Happy Birthday #${state.age}! \u{1F389}`;
       }
@@ -54,7 +55,7 @@ yourAgeInput.addEventListener("change", (event) => {
 yourFavoriteInput.addEventListener("change", (event) => {
     if (yourFavoriteInput.value !== "") {
       state.favorite = yourFavoriteInput.value;
-      birthdayFavorite.textContent = `I really hope you get so much ${state.favorite} today! \u{1F381}`;
+      birthdayFavorite.textContent = `I really hope you get so much ${state.favorite.toUpperCase()} today! \u{1F381}`;
       checkState();
     }
 });
