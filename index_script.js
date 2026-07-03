@@ -25,8 +25,8 @@ const birthdayMessages = {
     chinese: () => `Zhù nǐ shēngrì kuàilè, zhù nǐ shēngrì kuàilè, zhù qīn'ài de ${state.name} shēngrì kuàilè, zhù nǐ shēngrì kuàilè.`,
 };
 
-yourNameInput.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" || event.key === "Tab" && yourNameInput.value !== "") {
+yourNameInput.addEventListener("change", (event) => {
+    if (yourNameInput.value !== "") {
         state.name = yourNameInput.value;
         if (state.age !== "your_age") {
             title.textContent = `Happy Birthday #${state.age} ${state.name}! \u{1F389}`;
@@ -37,8 +37,8 @@ yourNameInput.addEventListener("keydown", (event) => {
     }
 });
 
-yourAgeInput.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" || event.key === "Tab" && yourAgeInput.value !== "") {
+yourAgeInput.addEventListener("change", (event) => {
+    if (yourAgeInput.value !== "") {
       state.age = Number(yourAgeInput.value);
       state.wowAge = state.age / 2 + 7;
       birthdayAge.textContent = `\u{1F62E} Wow, you're ${state.age}? You don't look a day over ${state.wowAge}! \u{1F552}`;
@@ -51,8 +51,8 @@ yourAgeInput.addEventListener("keydown", (event) => {
     }
 })
 
-yourFavoriteInput.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" || event.key === "Tab" && yourFavoriteInput.value !== "") {
+yourFavoriteInput.addEventListener("change", (event) => {
+    if (yourFavoriteInput.value !== "") {
       state.favorite = yourFavoriteInput.value;
       birthdayFavorite.textContent = `I really hope you get so much ${state.favorite} today! \u{1F381}`;
       checkState();
