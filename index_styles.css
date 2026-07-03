@@ -75,7 +75,9 @@ body {
     margin: 10px 0px 10px 0px;
 }
 
-#your_name {
+#your_name_text,
+#your_age_text,
+#your_favorite_text {
     padding: 2px 2px 2px 10px;
     font-weight: bold;
     font-size: 20px;
@@ -102,6 +104,11 @@ body {
 #birthday_favorite {
     display: flex;
     justify-self: center;
+}
+
+#birthday_title {
+    font-size: 24px;
+    margin: 30px 0 0 0;
 }
 
 #birthday_age,

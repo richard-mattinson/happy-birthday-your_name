@@ -26,7 +26,7 @@ const birthdayMessages = {
 };
 
 yourNameInput.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" && yourNameInput.value !== "") {
+    if (event.key === "Enter" || event.key === "Tab" && yourNameInput.value !== "") {
         state.name = yourNameInput.value;
         if (state.age !== "your_age") {
             title.textContent = `Happy Birthday #${state.age} ${state.name}! \u{1F389}`;
@@ -38,24 +38,24 @@ yourNameInput.addEventListener("keydown", (event) => {
 });
 
 yourAgeInput.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" && yourAgeInput.value !== "") {
-        state.age = Number(yourAgeInput.value);
-        state.wowAge = (state.age / 2) + 7
-        birthdayAge.textContent = `\u{1F62E} Wow, you're ${state.age}? You don't look a day over ${state.wowAge}! \u{1F552}`;
-        if (state.name !== "your_name") {
-            title.textContent = `Happy Birthday #${state.age} ${state.name}! \u{1F389}`;
-        } else {
-            title.textContent = `Happy Birthday #${state.age}! \u{1F389}`;
-        }
-        checkState();
+    if (event.key === "Enter" || event.key === "Tab" && yourAgeInput.value !== "") {
+      state.age = Number(yourAgeInput.value);
+      state.wowAge = state.age / 2 + 7;
+      birthdayAge.textContent = `\u{1F62E} Wow, you're ${state.age}? You don't look a day over ${state.wowAge}! \u{1F552}`;
+      if (state.name !== "your_name") {
+        title.textContent = `Happy Birthday #${state.age} ${state.name}! \u{1F389}`;
+      } else {
+        title.textContent = `Happy Birthday #${state.age}! \u{1F389}`;
+      }
+      checkState();
     }
 })
 
 yourFavoriteInput.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" && yourFavoriteInput.value !== "") {
-        state.favorite = yourFavoriteInput.value;
-        birthdayFavorite.textContent = `I really hope you get so much ${state.favorite} today! \u{1F381}`;
-        checkState();
+    if (event.key === "Enter" || event.key === "Tab" && yourFavoriteInput.value !== "") {
+      state.favorite = yourFavoriteInput.value;
+      birthdayFavorite.textContent = `I really hope you get so much ${state.favorite} today! \u{1F381}`;
+      checkState();
     }
 });
 
