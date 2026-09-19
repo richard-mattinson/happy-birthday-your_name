@@ -139,8 +139,9 @@ yourNameInput.addEventListener("change", (event) => {
 
 yourNameInput.addEventListener("keydown", event => {
     if (event.key === "Enter" && state.favorite !== "your_favorite" && state.age !== "your_age") {
-        yourNameInput.blur()
-    }
+        setTimeout(() => {
+            yourFavoriteInput.blur();
+        }, 10);    }
 })
 
 yourAgeInput.addEventListener("change", () => {
@@ -159,8 +160,9 @@ yourAgeInput.addEventListener("change", () => {
 
 yourAgeInput.addEventListener("keydown", event => {
     if (event.key === "Enter" && state.favorite !== "your_favorite" && state.name !== "your_name") {
-        yourAgeInput.blur()
-    }
+        setTimeout(() => {
+            yourFavoriteInput.blur();
+        }, 10);    }
 })
 
 function ageMessageTranslation() {
@@ -198,7 +200,11 @@ yourFavoriteInput.addEventListener("change", () => {
 
 yourFavoriteInput.addEventListener("keydown", event => {
     if (event.key === "Enter" && state.age !== "your_age" && state.name !== "your_name") {
-        yourFavoriteInput.blur()
+        console.log("hi");
+        event.preventDefault()
+        setTimeout(() => {
+            yourFavoriteInput.blur()
+        }, 10);
     }
 })
 
