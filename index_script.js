@@ -3,9 +3,9 @@ const birthdayMessageText = document.querySelector("#birthday_message_text");
 
 const languageDropdown = document.querySelector("#language_dropdown")
 
-const yourFavoriteInput = document.querySelector("#your_favorite_text")
 const yourNameInput = document.querySelector("#your_name_text");
 const yourAgeInput = document.querySelector("#your_age_text")
+const yourFavoriteInput = document.querySelector("#your_favorite_text")
 
 const birthdayElements = document.querySelector("#birthday_elements")
 const birthdayTitle = document.querySelector("#birthday_title")
@@ -137,6 +137,12 @@ yourNameInput.addEventListener("change", (event) => {
     }
 });
 
+yourNameInput.addEventListener("keydown", event => {
+    if (event.key === "Enter" && state.favorite !== "your_favorite" && state.age !== "your_age") {
+        yourNameInput.blur()
+    }
+})
+
 yourAgeInput.addEventListener("change", () => {
     if (yourAgeInput.value !== "") {
         state.age = Number(yourAgeInput.value);
@@ -148,6 +154,12 @@ yourAgeInput.addEventListener("change", () => {
             birthdayMessageText.textContent = `#${state.age}! \u{1F389}`;
         }
         checkFormComplete();
+    }
+})
+
+yourAgeInput.addEventListener("keydown", event => {
+    if (event.key === "Enter" && state.favorite !== "your_favorite" && state.name !== "your_name") {
+        yourAgeInput.blur()
     }
 })
 
@@ -183,6 +195,12 @@ yourFavoriteInput.addEventListener("change", () => {
         checkFormComplete();
     }
 });
+
+yourFavoriteInput.addEventListener("keydown", event => {
+    if (event.key === "Enter" && state.age !== "your_age" && state.name !== "your_name") {
+        yourFavoriteInput.blur()
+    }
+})
 
 function favoriteMessageTranslation() {
     let favoriteMessage;
